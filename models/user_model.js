@@ -9,8 +9,17 @@ const userschema = new mongoose.Schema({
         type: String,
         required: true
     },
-    token : {
-        type:Number
+    // token :{
+    //     type : mongoose.Schema.Types.ObjectId,
+    //     ref : 'Token'
+    // },
+    // isVerified : {
+    //     type:Boolean,
+    //     default :false
+    // },
+    isAdmin :{
+        type :Boolean,
+        default : false
     }
 })
 module.exports = User = mongoose.model('User',userschema);

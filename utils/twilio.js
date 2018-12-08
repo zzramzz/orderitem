@@ -3,12 +3,16 @@ const authToken = '4ac712f2e1e02f01628dd8fee20061f1';
 const client = require('twilio')(accountSid, authToken);
 
 
-client.messages
+module.exports = function sms(name,token,phone){
+    return client.messages
       .create({
-         body: 'Hello there!',
+         body: `Hello there! ${name}.. your Token is ${token}` ,
          from: '+13252214607',
-         mediaUrl: 'https://demo.twilio.com/owl.png',
-         to: '+9779860329221'
+         to: `+${phone}`
        })
-      .then(message => console.log(message.sid))
-      .done();
+      .then(message => {console.log(message.sid,'tnt')})
+      .catch(err=>{return err.status})
+}
+
+// .
+// 

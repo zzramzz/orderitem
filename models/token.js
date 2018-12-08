@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 
-const token = new mongoose.Schema({
+const tokenSchema = new mongoose.Schema({
     token : {
         type: Number
     },
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    jwtToken: {
+        type: String
     }
 
 })
+
+module.exports = Token = mongoose.model('Token', tokenSchema);
