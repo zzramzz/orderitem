@@ -1,16 +1,24 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    item: {
-        type:String,
+    food: {
+        type: String,
         required: true
     },
-    orderedBy : {
-        type:mongoose.Schema.Types.ObjectId,
+    foodId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Food'
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    orderedBy: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
-},{timestamps: true});
+}, { timestamps: true });
 
-orderSchema.index({createdAt: 1},{expireAfterSeconds: 60*60*6})
+orderSchema.index({ createdAt: 1 }, { expireAfterSeconds: 60 * 60 * 6 })
 
-module.exports = Order = mongoose.model('Order',orderSchema);
+module.exports = Order = mongoose.model('Order', orderSchema);

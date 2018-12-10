@@ -29,6 +29,9 @@ process.on('uncaughtRejection',(ex)=>{
     process.exit(1);
 })
 
+console.log(process.env.TWILIO_ACCOUNT_SID)
+
+
 db(app);
 middlewares(app);
 routes(app);

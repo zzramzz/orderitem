@@ -1,5 +1,5 @@
 //Admin middleware to perform admin related task
 module.exports = function (req, res, next) {
-    if(!req.header('isAdmin')) return res.status(403).send('Access Denied') //Forbidden
+    if(!req.user.isAdmin) return res.status(403).send('Access Denied') //Forbidden
     next();
 }
